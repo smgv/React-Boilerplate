@@ -1,0 +1,40 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# echo '🏗️👷 Styling, testing and building your project before committing'
+
+# Check Eslint standards
+# npm run check-lint ||
+# (
+#     echo '❌ Lint Check Failed, add changes and try commit again. ❌';
+#     false;
+# )
+# echo '✅ Lint Checked'
+
+# Check Test Cases
+# npm run test ||
+# (
+#     echo '❌ Test Cases Failed. ❌
+#             Are you seriously trying to commit that with failed test cases? Make the changes required above.'
+#     false;
+# )
+# echo '✅ Test Cases Checked'
+
+echo '🏗️👷 checking prettier formating'
+npm run format
+echo '✅ Formating Done'
+
+# Check Build
+npm run build ||
+(
+    echo '❌ Build Failed. ❌
+            Are you seriously trying to write that? Make the changes required above.'
+    false;
+)
+echo '✅ Build Checked'
+
+# If everything passes... Now we can commit
+echo 'Alright.... Code looks good to Husky... Trying to build now.'
+
+# If everything passes... Now we can commit
+echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
